@@ -16,9 +16,11 @@ app.use(helmet());
 
 
 //Import the mongoose module
-//Import the mongoose module
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://acit3695:acit3695@graphql-api.6krsq.mongodb.net/local_library?retryWrites=true&w=majority';
+
+var dev_db_url = 'mongodb+srv://acit3695:acit3695@graphql-api.6krsq.mongodb.net/local_library?retryWrites=true&w=majority'
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+
 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
